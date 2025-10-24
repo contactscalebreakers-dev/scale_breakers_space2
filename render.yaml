@@ -1,0 +1,11 @@
+# Optional: Render infra-as-code to create a static site.
+# If you use Render's dashboard, you can skip this file and configure manually.
+services:
+  - type: static-site
+    name: scale-breakers-frontend
+    repo: https://github.com/contactscalebreakers-dev/scale_breakers_space
+    branch: main
+    buildCommand: corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile && pnpm run build
+    staticPublishPath: dist
+    env: {}
+    autoDeploy: true
